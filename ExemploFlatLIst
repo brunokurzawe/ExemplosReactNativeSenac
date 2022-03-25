@@ -1,0 +1,50 @@
+import React from 'react';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+
+const DATA = [
+  {
+    id: '1',
+    title: 'Golf GTI 1.8',
+  },
+  {
+    id: '2',
+    title: 'Lancer EVO 2.2',
+  },
+ 
+];
+
+const App = () => {
+  const renderItem = ({ item }) => (
+     <View style={styles.item}>
+    <Text style={styles.title}>{item.title}</Text>
+  </View>
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  item: {
+    backgroundColor: '#7b68ee',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
+
+export default App;
